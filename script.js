@@ -48,6 +48,7 @@ document.addEventListener("keydown", (e) => {
         }
         if (correct === 5) {
           winText.style.opacity = "1";
+          winText.classList.add("typing-effect");
         }
         currentColumn++;
         if (currentColumn === 2) {
@@ -85,6 +86,7 @@ document.addEventListener("keydown", (e) => {
         if (currentColumn === 7 && correct < 5) {
           winText.textContent = "You Lose!";
           winText.style.opacity = "1";
+          winText.classList.add("typing-effect");
         }
 
         return;
@@ -130,6 +132,17 @@ document.addEventListener("keydown", (e) => {
     }
   }
 });
+const wrapper = document.getElementById("bubble-wrapper")
+const animateBubble = x => {
+  const bubble = document.createElement("div")
+  bubble.className =  "bubble"
+  bubble.style.left = x + "px";
+  wrapper.appendChild(bubble)
+  setTimeout(() => wrapper.removeChild(bubble), 1500)
+ 
+}
+window.onmousemove = ef => animateBubble(ef.clientX)
+
 
 const words = [
   "rossa",
